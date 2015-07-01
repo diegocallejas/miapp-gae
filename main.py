@@ -19,7 +19,6 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-
 class Documentos(db.Model):
   tipo=db.StringProperty()
   numero=db.StringProperty()
@@ -45,7 +44,7 @@ class IdentityPage(webapp2.RequestHandler):
     template = JINJA_ENVIRONMENT.get_template('identity_form.html')
     self.response.write(template.render({
         'tipo_documentos': self.TIPOS_DOCUMENTOS,
-        'fecha': date.today().strftime("%A %B %y"),
+        'fecha': date.today().strftime("%d %b %Y"),
     }))
 
   def post(self):
@@ -145,12 +144,24 @@ class QuestionPage(webapp2.RequestHandler):
       </html>
     """.format(form_data=forms_preguntas[paso]))
 
-
 class ResultPage(webapp2.RequestHandler):
   pass
+
+class ListadoUsuarios_Cedula(webapp2.RequestHandler):
+  def get(self):
+    documentos_ciudadania=db.GqlQuery("select * from Documentos where tipo = '1'")
+    documentos_identidad=db.GqlQuery("select * from Documentos where tipo = '2'")
+    documentos_extranjeria=db.GqlQuery("select * from Documentos where tipo = '3'")
+    template = JINJA_ENVIRONMENT.get_template('list.html')
+    self.response.write(template.render({
+        'documentos_ciudadania': documentos_ciudadania,
+        'documentos_extranjeria': documentos_extranjeria,
+        'documentos_identidad': documentos_identidad
+    }))
 
 app = webapp2.WSGIApplication([
     webapp2.Route(r'/identity', handler=IdentityPage, name='identity'),
     webapp2.Route(r'/questions/<qid:\d+>', handler=QuestionPage, name='questions'),
-    webapp2.Route(r'/result', handler=ResultPage, name='results')
+    webapp2.Route(r'/result', handler=ResultPage, name='results'),
+    webapp2.Route(r'/list', handler=ListadoUsuarios_Cedula, name='list')
 ], debug=True)

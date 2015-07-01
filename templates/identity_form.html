@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block titulo%}Identificación{% endblock%}
 {% block contenido%}
-<p>Hoy es {{ fecha }}</p>
+<p>Hoy es <b>{{ fecha }}</b></p>
   <form method="POST" role="form" class="form-horizontal">
   <fieldset>
-    <legend>Censo Nacional App Engine</legend>
+    <legend>Censo Local App Engine</legend>
       <div class="form-group">
       <label for="doc_type" class="col-xs-2">Documento</label>
       <div class="col-xs-4">
@@ -40,4 +40,7 @@
     </div>
   </fieldset>
 </form>
+      <div class="footer">
+        <p><a href='../'>Inicio</a></p>
+      </div>
 {% endblock%}

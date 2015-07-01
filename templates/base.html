@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset='utf-8'>
-  <title>Censo Local -- {% block titulo%}{% endblock%}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-  <div class="container">
-    {% block contenido%}{% endblock%}
-  </div>
+  <head>
+	<meta charset='utf-8'>
+	<title>Censo Local -- {% block titulo%}{% endblock%}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="shortcut icon" href="/assets/favicon.ico" />
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+	<div class="container">
+	  <h1 class="page-header">Aplicación de ejemplo Censo Local</h1> 
+	  {% block contenido%}{% endblock%}
+	</div>
 </body>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset='utf-8'>
+    <title>Censo Local -- Muy Pronto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="page-header">Aplicación de ejemplo Censo Local</h1>
+      <div class="row">
+        <div class="col-xs-4">
+          <h2 class="page-header">Cedula de Ciudadania</h2>
+          {% for doc in documentos_ciudadania %}
+            <p>{{ doc.correo }}<br><b>RUT: </b>{{ doc.numero }}</p>
+          {% endfor %}
+        </div>
+        <div class="col-xs-4">
+          <h2 class="page-header">Cedula de Extranjeria</h2>
+          {% for doc in documentos_extranjeria %}
+            <p>{{ doc.correo }}<br><b>RUT: </b>{{ doc.numero }}</p>
+          {% endfor %}
+        </div>
+        <div class="col-xs-4">
+          <h2 class="page-header">Tarjeta de Identidad</h2>
+          {% for doc in documentos_identidad %}
+            <p>{{ doc.correo }}<br><b>RUT: </b>{{ doc.numero }}</p>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="footer">
+        <p align="right"><a href='../'>Volver</a></p>
+      </div>
+    </div>
+  </body>
+</html>
